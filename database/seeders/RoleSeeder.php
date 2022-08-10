@@ -33,6 +33,8 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'orden.index'])->syncRoles([$admin, $proveedor]);
         Permission::create(['name' => 'orden.create'])->syncRoles([$admin, $proveedor]);
         Permission::create(['name' => 'orden.edit'])->syncRoles([$admin, $proveedor]);
+
+        Permission::create(['name' => 'feedback.index'])->syncRoles([$admin, $proveedor]);
         
     }
 }

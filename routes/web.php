@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\FeedBackController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrdenController;
 use App\Http\Controllers\ProductoController;
@@ -35,5 +36,6 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::resource('categoria', CategoriaController::class)->except(['edit']);;
     Route::resource('orden', OrdenController::class);
+    Route::resource('feedback', FeedBackController::class);
 
 });

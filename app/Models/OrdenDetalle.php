@@ -22,4 +22,9 @@ class OrdenDetalle extends Model
         return $this->hasOne(Producto::class, 'id_producto', 'id_producto');
     }
 
+    public function metodo_pago()
+    {
+        return $this->hasOne(TablaMaestroDetalle::class, 'id_maestro_detalle', 'id_metodo_pago');
+    }
+
 }

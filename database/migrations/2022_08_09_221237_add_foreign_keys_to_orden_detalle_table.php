@@ -14,8 +14,8 @@ class AddForeignKeysToOrdenDetalleTable extends Migration
     public function up()
     {
         Schema::table('orden_detalle', function (Blueprint $table) {
-            $table->foreign(['id_producto'], 'FK_orden_detalle_producto')->references(['id_producto'])->on('producto');
             $table->foreign(['id_orden'], 'FK_orden_detalle_orden')->references(['id_orden'])->on('orden');
+            $table->foreign(['id_producto'], 'FK_orden_detalle_producto')->references(['id_producto'])->on('producto');
         });
     }
 
@@ -27,8 +27,8 @@ class AddForeignKeysToOrdenDetalleTable extends Migration
     public function down()
     {
         Schema::table('orden_detalle', function (Blueprint $table) {
-            $table->dropForeign('FK_orden_detalle_producto');
             $table->dropForeign('FK_orden_detalle_orden');
+            $table->dropForeign('FK_orden_detalle_producto');
         });
     }
 }

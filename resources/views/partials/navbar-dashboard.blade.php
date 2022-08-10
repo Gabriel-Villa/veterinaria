@@ -10,10 +10,10 @@
                 PRODUCTOS <i class="fa fa-archive ml-2" aria-hidden="true"></i>
             </a>
             <a class="btn btn-primary" href="{{ route('orden.index') }}">
-                BANDEJA <i class="fa fa-envelope-o ml-2" aria-hidden="true"></i>
+                ORDENES <i class="fa fa-list ml-2" aria-hidden="true"></i>
             </a>
-            <a class="btn btn-primary" href="#">
-                RECLAMOS <i class="fa fa-exclamation ml-2" aria-hidden="true"></i>
+            <a class="btn btn-primary" href="{{ route('feedback.index') }}">
+                BANDEJA <i class="fa fa-envelope-o ml-2" aria-hidden="true"></i>
             </a>
         </li>
     </ul>

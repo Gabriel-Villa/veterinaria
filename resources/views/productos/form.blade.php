@@ -28,7 +28,7 @@
         <div class="form-group">
             <label for="precio">Precio</label>
             <input type="number" class="form-control" value="{{ isset($producto->precio) ? $producto->precio : '' }}"
-                name="precio" id="precio" min="1" maxlength="2" onchange="setTwoNumberDecimal" step=".01"  aria-describedby="precio" placeholder="Precio">
+                name="precio" id="precio" min="1" maxlength="5" onchange="setTwoNumberDecimal" step=".01"  aria-describedby="precio" placeholder="Precio">
         </div>
         <div class="form-group">
             <label for="precio">Stock</label>
@@ -54,11 +54,11 @@
         @if (!isset($producto->id_categoria))
             <div class="custom-file mt-2">
                 <input type="file" class="custom-file-input" id="image" name="image" required>
-                <label class="custom-file-label" for="image" accept=".jpeg, .png, .jpg">Elejir imagen (480x480)</label>
+                <label class="custom-file-label" for="image" accept=".jpeg, .png, .jpg">Elejir imagen</label>
             </div>
             <div class="custom-file mt-2">
                 <input type="file" multiple class="custom-file-input" id="image-detalle" name="image-detalle[]" required>
-                <label class="custom-file-label" for="image-detalle" accept=".jpeg, .png, .jpg">Elejir imagen detalles (480x480)</label>
+                <label class="custom-file-label" for="image-detalle" accept=".jpeg, .png, .jpg">Elejir imagen detalles</label>
             </div>
         @endif
     </div>

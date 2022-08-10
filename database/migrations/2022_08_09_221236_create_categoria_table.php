@@ -16,7 +16,7 @@ class CreateCategoriaTable extends Migration
         Schema::create('categoria', function (Blueprint $table) {
             $table->bigIncrements('id_categoria');
             $table->string('nombre_categoria', 80);
-            $table->date('fecha_creacion')->default(date("Y-m-d"));
+            $table->date('fecha_creacion')->default('2022-08-06');
             $table->integer('estado')->default(1);
         });
     }

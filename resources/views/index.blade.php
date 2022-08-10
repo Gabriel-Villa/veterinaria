@@ -66,7 +66,7 @@
                                         <div class="productblock product-list-wrap product-list">
                                             <div class="Content">
                                                 <a href="javascript:void(0)">
-                                                    <img class="img-fluid" src="/images/productos/{{ $producto['imagen'] }}" alt="img">
+                                                    <img class="img-fluid" src="/images/productos/{{ $producto['imagen'] }}" alt="img" style="height: 250px; width: 250px;">
                                                 </a>
                                                 <div class="product-title"><a
                                                         href="product-detail-fullwidth.html">{{ $producto['nombre'] }}</a></div>
@@ -77,7 +77,7 @@
                                         </div>
                                     </div>
                                 @empty
-                                    <p>Aun no hay productos disponibles !</p>
+                                    <p class="text-danger font-weight-bold ml-3">Aun no hay productos disponibles !</p>
                                 @endforelse
                                 <div class="w-100"></div>
                                 {{ $productos->links() }}

@@ -14,6 +14,10 @@ class CategoriaSeeder extends Seeder
      */
     public function run()
     {
-        Categoria::factory()->count(4)->create();
+        Categoria::insert(['nombre_categoria' => 'CATEGORIA 1',  'fecha_creacion' => date("Y-m-d")]);
+        Categoria::insert(['nombre_categoria' => 'CATEGORIA 2',  'fecha_creacion' => date("Y-m-d")]);
+        Categoria::insert(['nombre_categoria' => 'CATEGORIA 3',  'fecha_creacion' => date("Y-m-d")]);
+        Categoria::insert(['nombre_categoria' => 'CATEGORIA 4',  'fecha_creacion' => date("Y-m-d")]);
+        Categoria::insert(['nombre_categoria' => 'CATEGORIA 5',  'fecha_creacion' => date("Y-m-d")]);
     }
 }

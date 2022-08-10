@@ -51,7 +51,7 @@ class OrdenController extends Controller
      */
     public function store(Request $request)
     {
-
+        
         try {
 
             $producto = Producto::ById($request->id_producto)->first();
@@ -71,7 +71,7 @@ class OrdenController extends Controller
                 'comision' => round(($request->cantidad * $producto->precio) / 100)
             ]);
      
-            OrdenDetalle::insert($request->only('id_orden', 'id_producto', 'cantidad', 'comision'));
+            OrdenDetalle::insert($request->only('id_orden', 'id_producto', 'cantidad', 'comision', 'id_metodo_pago'));
 
             $producto->stock = $producto->stock - $request->cantidad; 
     

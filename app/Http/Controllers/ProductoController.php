@@ -6,6 +6,7 @@ use App\Http\Requests\ProductoRequest;
 use App\Models\Categoria;
 use App\Models\Producto;
 use App\Models\ProductoDetalle;
+use App\Models\TablaMaestroDetalle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -56,26 +57,33 @@ class ProductoController extends Controller
      */
     public function store(ProductoRequest $request)
     {
-        $file = $request->file('image');
-        $name = $file->getClientOriginalName();
-        
-        $archivo = $request->file('image');
-        $archivo->move(public_path().'/images/productos/',$name);
+        try {
+            $file = $request->file('image');
+            $name = $file->getClientOriginalName();
+            
+            $archivo = $request->file('image');
+            $archivo->move(public_path().'/images/productos/',$name);
 
-        $request->request->add(['imagen' => $name]);
-        $id_producto = Producto::insertGetId($request->only(['id_proveedor', 'nombre', 'precio', 'descripcion', 'imagen', 'stock', 'id_categoria']));
-        
-        if($request->hasfile('image-detalle')){
+            $request->request->add(['imagen' => $name]);
+            $id_producto = Producto::insertGetId($request->only(['id_proveedor', 'nombre', 'precio', 'descripcion', 'imagen', 'stock', 'id_categoria']));
+            
+            if($request->hasfile('image-detalle')){
 
-            foreach($request->file('image-detalle') as $file)
-            {
-                $nombre = $file->getClientOriginalName();
-                $file->move(public_path().'/images/productos/', $nombre);
-                ProductoDetalle::insert(['id_producto' => $id_producto, 'imagen' => $nombre]);
+                foreach($request->file('image-detalle') as $file)
+                {
+                    $nombre = $file->getClientOriginalName();
+                    $file->move(public_path().'/images/productos/', $nombre);
+                    ProductoDetalle::insert(['id_producto' => $id_producto, 'imagen' => $nombre]);
+                }
             }
+
+            return redirect()->back()->with('message', 'Producto creado exitosamente');
+
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error' => ['Ocurrio un error al crear el producto.']]);
         }
 
-        return redirect()->back()->with('message', 'Producto creado exitosamente');
+       
     }
 
     /**
@@ -91,7 +99,9 @@ class ProductoController extends Controller
         if(!$producto) abort(404);
         
         $producto_detalle = ProductoDetalle::ByIdProducto($producto->id_producto)->get();
-        return view('productos.show', compact('producto', 'producto_detalle'));
+        $metodos_pago = TablaMaestroDetalle::ByIdMaestro(1)->get();
+
+        return view('productos.show', compact('producto', 'producto_detalle', 'metodos_pago'));
     }
 
     /**

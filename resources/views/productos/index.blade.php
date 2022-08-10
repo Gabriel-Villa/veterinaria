@@ -76,7 +76,7 @@
         </div>
     </section>
 
-     <!-- Modal -->
+    <!-- Modal -->
      <div class="modal" id="modal-producto" tabindex="-1" data-keyboard="false" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content" id="modal-body-producto">
@@ -89,7 +89,7 @@
         {
             let url_editar = id == null 
                 ? "{{ route('producto.create') }}"
-                : "{{ route('producto.edit', ':id') }}".replace(":id", id);
+                : "{{ route('producto.show', ':id') }}".replace(":id", id);
 
             $.ajax({
                 url: `${url_editar}`,

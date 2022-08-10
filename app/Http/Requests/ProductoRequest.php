@@ -22,14 +22,13 @@ class ProductoRequest extends FormRequest
             'nombre.required' => 'El nombre es requerido.',
             'nombre.unique' => 'Ya existe un producto con ese nombre.',
             'precio.required' => 'El precio es requerido.',
+            'precio.between' => 'El precio tiene que ser entre 1 y 9999.',
             'stock.required' => 'El stock es requerido.',
             'descripcion.required' => 'La descripcion es requerida.',
             'descripcion.max' => 'Maximo numero de caracteres 200.',
             'id_categoria.required' => 'La categoria es requerida.',
             'image.required' => 'La imagen es requerida',
-            'image.dimensions' => 'Por favor subir una imagen de 480x480.',
             'image-detalle.required' => 'La imagen de detalle es requerida',
-            'image-detalle.dimensions' => 'Por favor subir una imagen de 480x480 (Imagen detalle).',
         ];
     }
 
@@ -49,8 +48,9 @@ class ProductoRequest extends FormRequest
             'stock' => 'required',
             'descripcion' => 'required|max:200',
             'id_categoria' => 'required',
-            'image' => $edit ? '' : 'required|image|mimes:jpeg,png,jpg|dimensions:width=480,height=480',
-            'image-detalle.*' => $edit ? '' : 'required|image|mimes:jpeg,png,jpg|dimensions:width=480,height=480',
+            'image' => $edit ? '' : 'required|image|mimes:jpeg,png,jpg',
+            'image-detalle.*' => $edit ? '' : 'required|image|mimes:jpeg,png,jpg',
+            // |dimensions:max_width=480,max_height=480
         ];
     }
 }

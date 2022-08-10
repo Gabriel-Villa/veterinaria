@@ -25,13 +25,13 @@
                                     <div class="carousel-item active" data-slide-number="0">
                                         <img src="/images/productos/{{ $producto->imagen }}" class="d-block w-100" alt="..."
                                             data-type="image" data-toggle="lightbox"
-                                            data-gallery="example-gallery">
+                                            data-gallery="example-gallery" style="height: 390px !important;width: 390px !important;">
                                     </div>
                                     @forelse ($producto_detalle as $index => $detalle)
                                         <div class="carousel-item" data-slide-number="{{ $index+1 }}">
                                             <img src="/images/productos/{{ $detalle->imagen }}" class="d-block w-100" alt="..."
                                                 data-type="image" data-toggle="lightbox"
-                                                data-gallery="example-gallery">
+                                                data-gallery="example-gallery" style="height: 390px !important;width: 390px !important;">
                                         </div>
                                     @empty
                                     @endforelse
@@ -134,8 +134,18 @@
                                                 <option value="3">3</option>
                                             </select>
                                         </div>
-                                        <div class="col-12 col-md-3 col-lg-3 mt-3">
-                                            <button type="submit" class="tn theme-button animated slideInRight" id="btn-comprar">COMPRAR</button>
+                                        <div class="col-4 col-md-4 col-lg-4 mt-3">
+                                            <label for="cantidad">Metodo pago</label>
+                                            <select class="form-control p-0" id="id_metodo_pago" name="id_metodo_pago">
+                                                @forelse ($metodos_pago as $metodo)
+                                                    <option value="{{ $metodo->id_maestro_detalle }}">{{ $metodo->valor }}</option>
+                                                @empty
+                                                @endforelse
+                                            </select>
+                                        </div>
+
+                                        <div class="col-3 col-md-3 col-lg-3 mt-3">
+                                            <button type="submit" class="tn theme-button animated slideInRight mt-3" id="btn-comprar">COMPRAR</button>
                                         </div>
                                     </div>
                                 </form>

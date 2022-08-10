@@ -18,7 +18,7 @@ class CreateOrdenDetalleTable extends Migration
             $table->unsignedBigInteger('id_orden')->index('FK_orden_detalle_orden');
             $table->unsignedBigInteger('id_producto')->index('id_producto');
             $table->integer('cantidad');
-            $table->integer('comision');
+            $table->integer('comision')->nullable();
             $table->integer('id_metodo_pago')->nullable();
         });
     }
